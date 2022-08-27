@@ -96,11 +96,11 @@ st.set_option('deprecation.showfileUploaderEncoding', False)
 
 st.sidebar.title("About")
 st.sidebar.text("Aplikasi Objek Deteksi Jenis Ayam Hias")
-st.sidebar.text("Berbasis Website YOLOv4")
+st.sidebar.text("Berbasis Website YOLOv4-tiny")
 
 
 # Add a title and sidebar
-st.title("Objek Deteksi Jenis Ayam Hias YOLOv4 via Streamlit")
+st.title("Objek Deteksi Jenis Ayam Hias YOLOv4-tiny via Streamlit")
 
 model_type = st.sidebar.text("Objek Deteksi")
 
