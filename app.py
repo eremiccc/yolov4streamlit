@@ -8,6 +8,8 @@ import cv2
 import os
 import base64
 
+st.set_page_config(page_title='Objek Deteksi YOLOv4',
+page_icon="chart_with_upwards_trend")
 @st.cache(allow_output_mutation=True)
 def load_model(cfg_path, weights_path, labels_path):
     # lmemuat label kelas dan pelatihan dataset
