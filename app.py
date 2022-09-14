@@ -194,4 +194,4 @@ def add_bg_from_local(image_file):
     """,
     unsafe_allow_html=True
     )
-add_bg_from_local('gambar1.png')
+add_bg_from_local('ayam3.jpg')
