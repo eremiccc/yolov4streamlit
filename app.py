@@ -101,7 +101,7 @@ st.sidebar.text("aplikasi ini untuk mendeteksi jenis")
 st.sidebar.text("ayam hias yang masuk kategori")
 st.sidebar.text("ayam kate, ayam pelung, dan ayam poland")
 # tambahkan judul dan sidebar
-st.title("Objek Deteksi Jenis Ayam Hias YOLOv4 via Streamlit")
+st.title("Deteksi Jenis Ayam Hias YOLOv4 via Streamlit")
 
 model_type = st.sidebar.markdown("  ")
 
