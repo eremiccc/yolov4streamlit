@@ -97,22 +97,15 @@ def process_image(img, model_info, score_threshold=0.3, overlap_threshold=0.3):
 st.set_option('deprecation.showfileUploaderEncoding', False)
 
 st.sidebar.title("About")
-st.sidebar.text("Aplikasi Objek Deteksi Jenis Ayam Hias")
-st.sidebar.text("Berbasis Website YOLOv4-tiny")
+st.sidebar.text("aplikasi ini untuk mendeteksi jenis")
+st.sidebar.text("ayam hias yang masuk kategori")
+st.sidebar.text("ayam kate, ayam pelung, dan ayam poland")
+# tambahkan judul dan sidebar
+st.title("Objek Deteksi Jenis Ayam Hias YOLOv4 via Streamlit")
 
+model_type = st.sidebar.markdown("  ")
 
-# Add a title and sidebar
-st.title("Objek Deteksi Jenis Ayam Hias YOLOv4-tiny via Streamlit")
-
-model_type = st.sidebar.text("Objek Deteksi")
-
-st.sidebar.markdown("## Confidence threshold:")
-score_threshold = st.sidebar.slider("", 0.0, 1.0, 0.35, 0.01)
-st.sidebar.markdown("## Overlap threshold:")
-overlap_threshold = st.sidebar.slider("", 0.0, 1.0, 0.3, 0.01)
-
-
-#=============================== PATH TO config, weights, class names
+#PATH ke file config, file bobot, nama kelas
 if model_type == "Objek Deteksi":
     start = time.time()
     model_info = load_model("configs/yolov4-tiny-custom.cfg", "weights/yolov4-tiny-custom_best.weights", "obj.names")
@@ -147,9 +140,6 @@ f"""
     unsafe_allow_html=True,
 )
 
-st.sidebar.markdown("## Model YOLOv4 time load:")
-st.sidebar.text("{:.2f} detik".format(end - start))
-
 st.subheader("Upload file gambar untuk melakukan objek deteksi")
 img_stream = st.file_uploader("", ['jpg', 'jpeg', 'png'])
 
@@ -159,7 +149,7 @@ if img_stream:
     st.subheader("INPUT:")
     st.image(img[:,:, [2, 1, 0]], use_column_width=True)
     start = time.time()
-    image, classIDs, scores = process_image(img, model_info, score_threshold, overlap_threshold)
+    image, classIDs, scores = process_image(img, model_info)
     end = time.time()
     # st.balloons()
     st.subheader("Hasil:")
@@ -172,7 +162,7 @@ if img_stream:
         st.write("Deteksi ", len(classIDs), " Objek Ayam Hias")
     labels, colors = model_info[2:]
     for i, j in enumerate(classIDs):
-        color = tuple([int(c) for c in colors[j]])[-1::-1]
+        color = tuple([int(c) for c in colors[j]])[1::1]
         st.markdown("""
         <div style='display: flex; justify-content: space-between; width: 50%; align-items:center;'>
             <div style='text-align: left; flex:1; color:rgb{}; font-weight: 500; text-shadow: 1px 0px;'>{}:</div>
@@ -204,4 +194,4 @@ def add_bg_from_local(image_file):
     """,
     unsafe_allow_html=True
     )
-add_bg_from_local('ayam2.png')
+add_bg_from_local('gambar1.png')
